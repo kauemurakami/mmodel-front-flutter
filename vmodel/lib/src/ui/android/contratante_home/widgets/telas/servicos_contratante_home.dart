@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
+import 'package:vmodel/src/ui/android/widgets/text_form_field_widget.dart';
 
 class ServicosPage extends StatefulWidget {
   @override
@@ -58,134 +60,110 @@ class _ServicosPageState extends State<ServicosPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        onSaved: (value) {
-                          /// modelo.numero = value
-                        },
-                        decoration:
-                            InputDecoration(labelText: "Nome do Serviço"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
+                      TextFormCustomWidget(
+                          label: 'Nome do Serviço',
+                          maxLength: 50,
+                          type: TextInputType.text,
+                          onSaved: (value) {
+                            /// servico.nome = value
+                          },
+                          validate: (value) {
+                            if (value.length < 4) {
+                              return "Insira um serviço válido";
+                            } else
+                              return null;
+                          }),
+                      TextFormCustomWidget(
+                        label: 'Produto',
                         maxLength: 50,
-                        validator: (value) {
-                          if (value.length < 4) {
-                            return "Insira um serviço válido";
-                          } else
-                            return null;
-                        },
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
+                        type: TextInputType.text,
                         onSaved: (value) {
-                          /// modelo.numero = value
+                          /// servico.produto = value
                         },
-                        decoration: InputDecoration(labelText: "Produto"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
-                        maxLength: 50,
-                        validator: (value) {
+                        validate: (value) {
                           if (value.length < 3) {
                             return "Insira um produto válido";
                           } else
                             return null;
                         },
                       ),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        onSaved: (value) {
-                          /// modelo.numero = value
-                        },
-                        decoration:
-                            InputDecoration(labelText: "Local de divulgação"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
+                      TextFormCustomWidget(
+                        label: 'Local de Divulgação',
                         maxLength: 50,
-                        validator: (value) {
+                        type: TextInputType.text,
+                        onSaved: (value) {
+                          /// servico.localDivulgacao = value
+                        },
+                        validate: (value) {
                           if (value.length < 4) {
                             return "Insira um local válido";
                           } else
                             return null;
                         },
                       ),
-                      TextFormField(
-                        keyboardType: TextInputType.datetime,
+                      TextFormCustomWidget(
+                        label: 'Tempo do vídeo',
+                        maxLength: 6,
+                        type: TextInputType.text,
                         onSaved: (value) {
-                          /// modelo.numero = value
+                          /// servico.tempoVideo = value
                         },
-                        decoration:
-                            InputDecoration(labelText: "Tempo do vídeo"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
-                        maxLength: 50,
-                        validator: (value) {
+                        validate: (value) {
                           if (value.length < 4) {
                             return "Insira um tempo válido";
                           } else
                             return null;
                         },
                       ),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
-                        onSaved: (value) {
-                          /// modelo.numero = value
-                        },
-                        decoration: InputDecoration(labelText: "Peço"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
-                        maxLength: 7,
-                        validator: (value) {
-                          if (value.length < 3) {
-                            return "Insira um valor válido";
-                          } else
-                            return null;
-                        },
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
-                        onSaved: (value) {
-                          /// modelo.numero = value
-                        },
-                        decoration:
-                            InputDecoration(labelText: "Papel dos contratados"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
+                      TextFormCustomWidget(
+                          label: 'Preço',
+                          maxLength: 7,
+                          type: TextInputType.number,
+                          onSaved: (value) {
+                            /// servico.valor = value
+                          },
+                          validate: (value) {
+                            if (value.length < 3) {
+                              return "Insira um valor válido";
+                            } else
+                              return null;
+                          }),
+                      TextFormCustomWidget(
+                        label: 'Papel dos contratados',
                         maxLength: 124,
-                        validator: (value) {
+                        type: TextInputType.text,
+                        onSaved: (value) {
+                          /// servico.papel = value
+                        },
+                        validate: (value) {
                           if (value.length < 5) {
                             return "Insira um papel válido";
                           } else
                             return null;
                         },
                       ),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
+                      TextFormCustomWidget(
+                        label: 'Atuação com fala',
+                        maxLength: 3,
+                        type: TextInputType.text,
                         onSaved: (value) {
-                          /// modelo.numero = value
+                          /// servico.fala = value
                         },
-                        decoration:
-                            InputDecoration(labelText: "Atuação com fala"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
-                        maxLength: 7,
-                        validator: (value) {
+                        validate: (value) {
                           if (value.length < 3) {
                             return "Insira se a atuação possui fala";
                           } else
                             return null;
                         },
                       ),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
+                      TextFormCustomWidget(
+                        label: 'Vagas',
+                        maxLength: 4,
+                        type: TextInputType.number,
                         onSaved: (value) {
-                          /// modelo.numero = value
+                          /// seervico.qtVagas = value
                         },
-                        decoration:
-                            InputDecoration(labelText: "Quantidade de vagas"),
-                        cursorColor: Colors.white,
-                        enableSuggestions: true,
-                        maxLength: 7,
-                        validator: (value) {
+                        validate: (value) {
                           if (value.length < 1) {
                             return "Insira uma quantidade válida";
                           } else
@@ -203,18 +181,14 @@ class _ServicosPageState extends State<ServicosPage> {
                                   Container(
                                     width:
                                         MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
+                                    child: TextFormCustomWidget(
+                                      label: 'Altura',
+                                      maxLength: 3,
+                                      type: TextInputType.number,
                                       onSaved: (value) {
                                         /// modelo.altura = value
                                       },
-                                      decoration: InputDecoration(
-                                        labelText: "Altura",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 3,
-                                      validator: (value) {
+                                      validate: (value) {
                                         if (value.length < 3) {
                                           return "Insira uma altura válida";
                                         } else
@@ -225,18 +199,14 @@ class _ServicosPageState extends State<ServicosPage> {
                                   Container(
                                     width:
                                         MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
+                                    child: TextFormCustomWidget(
+                                      label: 'Peso',
+                                      maxLength: 3,
+                                      type: TextInputType.number,
                                       onSaved: (value) {
                                         /// modelo.peso = value
                                       },
-                                      decoration: InputDecoration(
-                                        labelText: "Peso",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 3,
-                                      validator: (value) {
+                                      validate: (value) {
                                         if (value.length < 2) {
                                           return "Insira um peso válida";
                                         } else
@@ -247,18 +217,14 @@ class _ServicosPageState extends State<ServicosPage> {
                                   Container(
                                     width:
                                         MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
+                                    child: TextFormCustomWidget(
+                                      label: 'Quadril',
+                                      maxLength: 3,
+                                      type: TextInputType.number,
                                       onSaved: (value) {
                                         /// modelo.quadril = value
                                       },
-                                      decoration: InputDecoration(
-                                        labelText: "Quadril",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 2,
-                                      validator: (value) {
+                                      validate: (value) {
                                         if (value.length < 2) {
                                           return "Insira uma medida válida";
                                         } else
@@ -269,18 +235,14 @@ class _ServicosPageState extends State<ServicosPage> {
                                   Container(
                                     width:
                                         MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.text,
+                                    child: TextFormCustomWidget(
+                                      label: 'Cor do olho',
+                                      maxLength: 9,
+                                      type: TextInputType.text,
                                       onSaved: (value) {
                                         /// modelo.cordolho = value
                                       },
-                                      decoration: InputDecoration(
-                                        labelText: "Cor do olho",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 8,
-                                      validator: (value) {
+                                      validate: (value) {
                                         if (value.length < 3) {
                                           return "Insira uma cor válida";
                                         } else
@@ -289,27 +251,22 @@ class _ServicosPageState extends State<ServicosPage> {
                                     ),
                                   ),
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.text,
-                                      onSaved: (value) {
-                                        /// modelo.corpele = value
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Cor da pele",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 10,
-                                      validator: (value) {
-                                        if (value.length < 3) {
-                                          return "Insira uma cor válida";
-                                        } else
-                                          return null;
-                                      },
-                                    ),
-                                  ),
+                                      width:
+                                          MediaQuery.of(context).size.width / 4,
+                                      child: TextFormCustomWidget(
+                                        label: 'Cor da pele',
+                                        maxLength: 10,
+                                        type: TextInputType.text,
+                                        onSaved: (value) {
+                                          /// modelo.corpele = value
+                                        },
+                                        validate: (value) {
+                                          if (value.length < 3) {
+                                            return "Insira uma cor válida";
+                                          } else
+                                            return null;
+                                        },
+                                      )),
                                 ],
                               ),
                             ),
@@ -320,116 +277,91 @@ class _ServicosPageState extends State<ServicosPage> {
                               child: Column(
                                 children: <Widget>[
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.text,
-                                      onSaved: (value) {
-                                        /// modelo.peso = value
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Manequim",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 3,
-                                      validator: (value) {
-                                        if (value.length < 1 ||
-                                            value.length > 3) {
-                                          return "Insira um manequim válido";
-                                        } else
-                                          return null;
-                                      },
-                                    ),
-                                  ),
+                                      width:
+                                          MediaQuery.of(context).size.width / 4,
+                                      child: TextFormCustomWidget(
+                                        label: 'Manequim',
+                                        maxLength: 3,
+                                        type: TextInputType.text,
+                                        onSaved: (value) {
+                                          /// modelo.peso = value
+                                        },
+                                        validate: (value) {
+                                          if (value.length < 1 ||
+                                              value.length > 3) {
+                                            return "Insira um manequim válido";
+                                          } else
+                                            return null;
+                                        },
+                                      )),
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
-                                      onSaved: (value) {
-                                        /// modelo.peso = value
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Busto",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 3,
-                                      validator: (value) {
-                                        if (value.length < 2) {
-                                          return "Insira um número válido";
-                                        } else
-                                          return null;
-                                      },
-                                    ),
-                                  ),
+                                      width:
+                                          MediaQuery.of(context).size.width / 4,
+                                      child: TextFormCustomWidget(
+                                        label: 'Busto',
+                                        maxLength: 3,
+                                        type: TextInputType.number,
+                                        onSaved: (value) {
+                                          /// modelo.peso = value
+                                        },
+                                        validate: (value) {
+                                          if (value.length < 2) {
+                                            return "Insira um número válido";
+                                          } else
+                                            return null;
+                                        },
+                                      )),
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
-                                      onSaved: (value) {
-                                        /// modelo.peso = value
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Número calçado",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 2,
-                                      validator: (value) {
-                                        if (value.length < 2) {
-                                          return "Insira um número válido";
-                                        } else
-                                          return null;
-                                      },
-                                    ),
-                                  ),
+                                      width:
+                                          MediaQuery.of(context).size.width / 4,
+                                      child: TextFormCustomWidget(
+                                        label: 'Número calçado',
+                                        maxLength: 2,
+                                        type: TextInputType.number,
+                                        onSaved: (value) {
+                                          /// modelo.peso = value
+                                        },
+                                        validate: (value) {
+                                          if (value.length < 2) {
+                                            return "Insira um número válido";
+                                          } else
+                                            return null;
+                                        },
+                                      )),
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.text,
-                                      onSaved: (value) {
-                                        /// modelo.cor cabelo = value
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Cor do cabelo",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 3,
-                                      validator: (value) {
-                                        if (value.length < 3) {
-                                          return "Insira uma cor válida";
-                                        } else
-                                          return null;
-                                      },
-                                    ),
-                                  ),
+                                      width:
+                                          MediaQuery.of(context).size.width / 4,
+                                      child: TextFormCustomWidget(
+                                        label: 'Cor cabelo',
+                                        maxLength: 10,
+                                        type: TextInputType.text,
+                                        onSaved: (value) {
+                                          /// modelo.cor cabelo = value
+                                        },
+                                        validate: (value) {
+                                          if (value.length < 3) {
+                                            return "Insira uma cor válida";
+                                          } else
+                                            return null;
+                                        },
+                                      )),
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4,
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
-                                      onSaved: (value) {
-                                        /// modelo.cintura = value
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Cintura",
-                                      ),
-                                      cursorColor: Colors.white,
-                                      enableSuggestions: true,
-                                      maxLength: 3,
-                                      validator: (value) {
-                                        if (value.length < 2) {
-                                          return "Insira um tamanho de cintura";
-                                        } else
-                                          return null;
-                                      },
-                                    ),
-                                  ),
+                                      width:
+                                          MediaQuery.of(context).size.width / 4,
+                                      child: TextFormCustomWidget(
+                                        label: 'Cintura',
+                                        maxLength: 3,
+                                        type: TextInputType.number,
+                                        onSaved: (value) {
+                                          /// modelo.cintura = value
+                                        },
+                                        validate: (value) {
+                                          if (value.length < 2) {
+                                            return "Insira um tamanho de cintura";
+                                          } else
+                                            return null;
+                                        },
+                                      )),
                                 ],
                               ),
                             ),
@@ -495,17 +427,7 @@ class _ServicosPageState extends State<ServicosPage> {
                         SizedBox(
                           width: 30,
                         ),
-                        OutlineButton(
-                          splashColor: Colors.red,
-                          highlightedBorderColor: Colors.red,
-                          borderSide: BorderSide(color: Colors.red),
-                          onPressed: () {
-                            Get.back();
-                          },
-                          child: Text('Cancelar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16)),
-                        ),
+                        CancelButtonCustom()
                       ],
                     ),
                   ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:validators/validators.dart';
+import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
+import 'package:vmodel/src/ui/android/widgets/text_form_field_widget.dart';
 
 class CadastroModeloPage extends StatefulWidget {
 //repository injection
@@ -25,108 +27,93 @@ class _CadastroModeloPageState extends State<CadastroModeloPage> {
                 padding: EdgeInsets.only(top: 32, bottom: 16),
                 child: Text('Cadastro Modelo', style: TextStyle(fontSize: 16)),
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                onSaved: (value) {
-                  /// modelo.nome = value
-                },
-                decoration: InputDecoration(labelText: "Nome"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 20,
-                validator: (value) {
-                  if (value.length < 3) {
-                    return "Insira um nome válido";
-                  } else
-                    return null;
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                onSaved: (value) {
-                  /// modelo.sobrenome = value
-                },
-                decoration: InputDecoration(labelText: "Sobrenome"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 40,
-                validator: (value) {
-                  if (value.length < 4) {
-                    return "Insira um sobrenome válido";
-                  } else
-                    return null;
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                onSaved: (value) {
-                  /// modelo.senha = value
-                },
-                decoration: InputDecoration(labelText: "Senha"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 22,
-                obscureText: true,
-                validator: (value) {
+              TextFormCustomWidget(
+                  label: 'Nome',
+                  validate: (value) {
+                    if (value.length < 3) {
+                      return "Insira um nome válido";
+                    } else
+                      return null;
+                  },
+                  maxLength: 20,
+                  type: TextInputType.text,
+                  onSaved: (value) {
+                    /// modelo.nome = value
+                  }),
+              TextFormCustomWidget(
+                  label: 'Sobrenome',
+                  validate: (value) {
+                    if (value.length < 4) {
+                      return "Insira um sobrenome válido";
+                    } else
+                      return null;
+                  },
+                  maxLength: 40,
+                  type: TextInputType.text,
+                  onSaved: (value) {
+                    /// modelo.sobrenome = value
+                  }),
+              TextFormCustomWidget(
+                label: 'Senha',
+                validate: (value) {
                   if (value.length < 6) {
                     return "Insira uma senha válida";
                   } else
                     return null;
                 },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
+                maxLength: 22,
+                type: TextInputType.text,
                 onSaved: (value) {
-                  /// client.email = value
+                  /// modelo.senha = value
                 },
-                decoration: InputDecoration(labelText: "Email"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 32,
-                validator: (value) {
-                  if (!isEmail(value)) {
-                    return "Insira um email válido";
-                  } else
-                    return null;
-                },
+                obscure: true,
               ),
-              TextFormField(
-                keyboardType: TextInputType.datetime,
+              TextFormCustomWidget(
+                  label: 'Email',
+                  validate: (value) {
+                    if (!isEmail(value)) {
+                      return "Insira um email válido";
+                    } else
+                      return null;
+                  },
+                  maxLength: 32,
+                  type: TextInputType.emailAddress,
+                  onSaved: (value) {
+                    /// client.email = value
+                  }),
+              TextFormCustomWidget(
+                  label: 'Data de nascimento',
+                  maxLength: 10,
+                  type: TextInputType.datetime,
+                  onSaved: (value) {
+                    //validar
+                    /// client.dataNascimento = value
+                  }),
+              TextFormCustomWidget(
+                label: 'Idade',
+                maxLength: 2,
+                type: TextInputType.number,
                 onSaved: (value) {
-                  //validar
-                  /// client.dataNascimento = value
+                  //model.idade = value
                 },
-                decoration: InputDecoration(labelText: "Data de nascimento"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 10,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                onSaved: (value) {
-                  //validar idade
-                  if( int.parse(value) >= 18){
-                  /// client.idade = value
-                  }else{
+                validate: (value) {
+                  if (int.parse(value) >= 18) {
+                    /// client.idade = value
+                  } else {
                     return "você precisaa ter mais de 18 anos para se registrar";
                   }
+                  return "";
                 },
-                decoration: InputDecoration(labelText: "Idade"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 2,
               ),
-              TextFormField(
-                keyboardType: TextInputType.number,
+              TextFormCustomWidget(
+                label: 'Número WhatsApp ',
+                maxLength: 11,
+                type: TextInputType.number,
                 onSaved: (value) {
                   /// modelo.numero = value
                 },
-                decoration: InputDecoration(labelText: "Número WhatsApp"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 11,
-                validator: (value) {
-                  if (value.length < 3) {
+                validate: (value) {
+                  if (value.length < 9) {
                     return "Insira um número válido";
                   } else
                     return null;
@@ -165,32 +152,27 @@ class _CadastroModeloPageState extends State<CadastroModeloPage> {
                   ),
                 ],
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                onSaved: (value) {
-                  /// modelo.cidade = value
-                },
-                decoration: InputDecoration(labelText: "Cidade"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 24,
-                validator: (value) {
-                  if (value.length < 3) {
-                    return "Insira uma cidade válida";
-                  } else
-                    return null;
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                  label: 'Cidade',
+                  maxLength: 24,
+                  type: TextInputType.text,
+                  onSaved: (value) {
+                    /// modelo.cidade = value
+                  },
+                  validate: (value) {
+                    if (value.length < 3) {
+                      return "Insira uma cidade válida";
+                    } else
+                      return null;
+                  }),
+              TextFormCustomWidget(
+                label: 'Estado',
+                maxLength: 20,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// modelo.estado = value
                 },
-                decoration: InputDecoration(labelText: "Estado"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 20,
-                validator: (value) {
+                validate: (value) {
                   if (value.length < 4) {
                     return "Insira um estado válido";
                   } else
@@ -207,19 +189,19 @@ class _CadastroModeloPageState extends State<CadastroModeloPage> {
                         BorderSide(color: Theme.of(context).accentColor),
                     onPressed: () {
                       //sua lógica para cadastrar o modelo
-                         final FormState form = formKey.currentState;
-                                Get.toNamed('homeModelo');
+                      final FormState form = formKey.currentState;
+                      Get.toNamed('homeModelo');
 
-                              if (form.validate()) {
-                                form.save();
-                                //recupera seu _character que é o sexo, coloca no objeto modelo e salva, 
-                                //cadastrar(modelo); 
-                                //e ir para tela de modelo
-                                Get.toNamed('homeModelo');
-                              } else {
-                                //snackbar
-                                print('erro ao salvar');
-                              }
+                      if (form.validate()) {
+                        form.save();
+                        //recupera seu _character que é o sexo, coloca no objeto modelo e salva,
+                        //cadastrar(modelo);
+                        //e ir para tela de modelo
+                        Get.toNamed('homeModelo');
+                      } else {
+                        //snackbar
+                        print('erro ao salvar');
+                      }
                     },
                     child: Text('Cadastrar',
                         style: TextStyle(color: Colors.white, fontSize: 16)),
@@ -227,16 +209,7 @@ class _CadastroModeloPageState extends State<CadastroModeloPage> {
                   SizedBox(
                     width: 30,
                   ),
-                  OutlineButton(
-                    splashColor: Colors.red,
-                    highlightedBorderColor: Colors.red,
-                    borderSide: BorderSide(color: Colors.red),
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child:
-                        Text('Cancelar', style: TextStyle(color: Colors.white, fontSize: 16)),
-                  ),
+                  CancelButtonCustom()
                 ],
               ),
             ],
@@ -246,5 +219,4 @@ class _CadastroModeloPageState extends State<CadastroModeloPage> {
     );
   }
 }
-
 enum SingingCharacter { feminino, masculino }

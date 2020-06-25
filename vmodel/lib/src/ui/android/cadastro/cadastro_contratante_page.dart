@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:validators/validators.dart';
+import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
+import 'package:vmodel/src/ui/android/widgets/text_form_field_widget.dart';
 
 class CadastroContratantePage extends StatefulWidget {
 //repository injection
@@ -23,153 +25,134 @@ class _CadastroContratantePageState extends State<CadastroContratantePage> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 32, bottom: 16),
-                child: Text('Cadastro Contratante', style: TextStyle(fontSize: 16)),
+                child: Text('Cadastro Contratante',
+                    style: TextStyle(fontSize: 16)),
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                label: 'Nome',
+                maxLength: 20,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// contratante.nome = value
                 },
-                decoration: InputDecoration(labelText: "Nome"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 20,
-                validator: (value) {
+                validate: (value) {
                   if (value.length < 3) {
                     return "Insira um nome válido";
                   } else
                     return null;
                 },
               ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
+              TextFormCustomWidget(
+                label: 'Email',
+                maxLength: 32,
+                type: TextInputType.emailAddress,
                 onSaved: (value) {
                   /// contratante.email = value
                 },
-                decoration: InputDecoration(labelText: "Email"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 32,
-                validator: (value) {
+                validate: (value) {
                   if (!isEmail(value)) {
                     return "Insira um email válido";
                   } else
                     return null;
                 },
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                label: 'Senha',
+                maxLength: 22,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// contratante.senha = value
                 },
-                decoration: InputDecoration(labelText: "Senha"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 22,
-                obscureText: true,
-                validator: (value) {
+                validate: (value) {
                   if (value.length < 6) {
                     return "Insira uma senha válida";
                   } else
                     return null;
                 },
+                obscure: true,
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                label: 'Site',
+                maxLength: 50,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// contratante.site = value
                 },
-                decoration: InputDecoration(labelText: "Site"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 50,
-                validator: (value) {
+                validate: (value) {
                   if (!value.contains('.com')) {
                     return "Insira uma site válido";
                   } else
                     return null;
                 },
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                label: 'Nome Fantasia',
+                maxLength: 30,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// contratante.nomeFantasia = value
                 },
-                decoration: InputDecoration(labelText: "Nome fantasia"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 30,
-                validator: (value) {
+                validate: (value) {
                   if (value.length < 3) {
                     return "Insira um nome fantasia válido válida";
                   } else
                     return null;
                 },
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                label: 'Atividade',
+                maxLength: 50,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// contratante.atividade = value
                 },
-                decoration: InputDecoration(labelText: "Atividade"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 50,
-                validator: (value) {
+                validate: (value) {
                   if (value.length < 5) {
                     return "Insira uma atividade válida";
                   } else
                     return null;
                 },
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                onSaved: (value) {
-                  /// contratante.razao = value
-                },
-                decoration: InputDecoration(labelText: "Razão Social"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 50,
-                validator: (value) {
-                  if (value.length < 8) {
-                    return "Insira uma razao social válida";
-                  } else
-                    return null;
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.text,
+              TextFormCustomWidget(
+                  label: 'Razão Social',
+                  maxLength: 50,
+                  type: TextInputType.text,
+                  onSaved: (value) {
+                    /// contratante.razao = value
+                  },
+                  validate: (value) {
+                    if (value.length < 8) {
+                      return "Insira uma razao social válida";
+                    } else
+                      return null;
+                  }),
+              TextFormCustomWidget(
+                label: 'cidade',
+                maxLength: 24,
+                type: TextInputType.text,
                 onSaved: (value) {
                   /// contratante.cidade = value
                 },
-                decoration: InputDecoration(labelText: "Cidade"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 24,
-                validator: (value) {
+                validate: (value) {
                   if (value.length < 3) {
                     return "Insira uma cidade válida";
                   } else
                     return null;
                 },
               ),
-              TextFormField(
-                keyboardType: TextInputType.text,
-                onSaved: (value) {
-                  /// contratante.estado = value
-                },
-                decoration: InputDecoration(labelText: "Estado"),
-                cursorColor: Colors.white,
-                enableSuggestions: true,
-                maxLength: 20,
-                validator: (value) {
-                  if (value.length < 4) {
-                    return "Insira um estado válido";
-                  } else
-                    return null;
-                },
-              ),
+              TextFormCustomWidget(
+                  label: 'Estado',
+                  maxLength: 20,
+                  type: TextInputType.text,
+                  onSaved: (value) {
+                    /// contratante.estado = value
+                  },
+                  validate: (value) {
+                    if (value.length < 4) {
+                      return "Insira um estado válido";
+                    } else
+                      return null;
+                  }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -200,16 +183,7 @@ class _CadastroContratantePageState extends State<CadastroContratantePage> {
                   SizedBox(
                     width: 30,
                   ),
-                  OutlineButton(
-                    splashColor: Colors.red,
-                    highlightedBorderColor: Colors.red,
-                    borderSide: BorderSide(color: Colors.red),
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text('Cancelar',
-                        style: TextStyle(color: Colors.white, fontSize: 16)),
-                  ),
+                  CancelButtonCustom()
                 ],
               ),
             ],

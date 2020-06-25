@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:validators/validators.dart';
+import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
 
 class RecuperarSenhaPage extends StatefulWidget {
 //repository injection
@@ -106,21 +107,7 @@ class _RecuperarSenhaPageState extends State<RecuperarSenhaPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 32.0),
-                    child: OutlineButton(
-                      borderSide: BorderSide(color: Colors.red),
-                      onPressed: () {
-                        Get.back();
-                      },
-                      splashColor: Colors.red,
-                      highlightedBorderColor: Colors.red,
-                      child: Text(
-                        'CANCELAR',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
+                    child: CancelButtonCustom()
                   ),
                 ],
               ),

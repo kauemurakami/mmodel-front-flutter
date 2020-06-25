@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
 
 class AlterarPerfilPage extends StatefulWidget {
 //repository injection
@@ -336,17 +337,7 @@ class _AlterarPerfilPageState extends State<AlterarPerfilPage> {
                         SizedBox(
                           width: 30,
                         ),
-                        OutlineButton(
-                          splashColor: Colors.red,
-                          highlightedBorderColor: Colors.red,
-                          borderSide: BorderSide(color: Colors.red),
-                          onPressed: () {
-                            Get.back();
-                          },
-                          child: Text('Cancelar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16)),
-                        ),
+                        CancelButtonCustom()
                       ],
                     ),
                   ),

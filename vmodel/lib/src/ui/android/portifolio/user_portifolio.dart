@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
 
 class PortifolioPage extends StatelessWidget {
 //repository injection
@@ -185,11 +186,18 @@ class PortifolioPage extends StatelessWidget {
         ],
       ),
       Positioned(
-          left: MediaQuery.of(context).size.width / 2,
-          child: Container(
-            child: Text('Portifólio',
-                style: TextStyle(color: Colors.white, fontSize: 24)),
-          ))
+          left: MediaQuery.of(context).size.width / 2.6,
+          child: SafeArea(
+            child: Container(
+              child: Text('Portifólio',
+                  style: TextStyle(color: Colors.white, fontSize: 24)),
+            ),
+          )),
+      Positioned(
+          child: SafeArea(
+        child: IconButton(
+            icon: Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
+      ))
     ]));
   }
 }

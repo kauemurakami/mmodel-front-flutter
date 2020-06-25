@@ -34,7 +34,7 @@ class TipoCadastroPage extends StatelessWidget {
                       onPressed: () {
                         //sua lógica para cadastrar o modelo
 
-                        Get.toNamed('homeModelo');
+                        Get.toNamed('cadastroModelo');
                       },
                       child: Text('Modelo',
                           style: TextStyle(color: Colors.white, fontSize: 16)),
