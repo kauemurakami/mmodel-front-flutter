@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
+import 'package:vmodel/src/ui/android/adicionar_admins/add_admins_page.dart';
 import 'package:vmodel/src/ui/android/alterar_perfil/alterar_perfil_page.dart';
 import 'package:vmodel/src/ui/android/cadastro/cadastro_contratante_page.dart';
 import 'package:vmodel/src/ui/android/cadastro/cadastro_modelo_page.dart';
 import 'package:vmodel/src/ui/android/contratante_home/contratante_home_page.dart';
+import 'package:vmodel/src/ui/android/contratantes_cadastrados/contratantes_cadastrados_page.dart';
 import 'package:vmodel/src/ui/android/login/login_page.dart';
 import 'package:vmodel/src/ui/android/portifolio/user_portifolio.dart';
 import 'package:vmodel/src/ui/android/recuperar_senha.dart/recuperar_senha_widget.dart';
+import 'package:vmodel/src/ui/android/solicitacao_contratante/solicitacao_contratante_page.dart';
 import 'package:vmodel/src/ui/android/splash/splash_page.dart';
 import 'package:vmodel/src/ui/android/tipo_cadastro/tipo_cadastro.dart';
 import 'package:vmodel/src/ui/android/user_home/user_home_page.dart';
@@ -23,5 +26,8 @@ class MyRoutes {
     GetPage(name: '/cadastroContratante', page:()=> CadastroContratantePage()),
     GetPage(name: '/portifolio', page:()=> PortifolioPage()),
     GetPage(name: '/alterarPerfilModelo', page:()=> AlterarPerfilPage()),
+    GetPage(name: '/addAdmin', page:()=> AdicionarAdminPage()),
+    GetPage(name: '/solicitacaoContratante', page:()=> SolicitacaoContratantePage()),
+    GetPage(name: '/contratantesCadastrados', page:()=> ContratantesCadastradosPage()),
   ];
 }

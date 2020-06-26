@@ -7,8 +7,8 @@ class DraggableCustimWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-                  minChildSize: 0.6,
-                  initialChildSize: 0.6,
+                  minChildSize: 0.1,
+                  initialChildSize: 0.2,
                   maxChildSize: 0.8,
                   builder: (BuildContext c, s) {
                     return Container(
@@ -18,9 +18,9 @@ class DraggableCustimWidget extends StatelessWidget {
                         color: Color(0xff1d1d1d),
                         boxShadow: [
                           new BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 1.0,
-                              spreadRadius: 1.0),
+                              color: Colors.white,
+                              blurRadius: 2.0,
+                              spreadRadius: 2.0),
                         ],
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(50),
@@ -30,7 +30,7 @@ class DraggableCustimWidget extends StatelessWidget {
                         controller: s,
                         children: <Widget>[
                           SizedBox(
-                            height: 20,
+                            height: 5,
                           ),
                           Text(
                             'Nome',

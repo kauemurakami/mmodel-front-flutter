@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class DrawerWidget extends StatelessWidget {
+class DrawerContratanteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,14 +18,14 @@ class DrawerWidget extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Icon(
-                          Icons.content_paste,
+                          Icons.list,
                           size: 30,
                         ),
                         SizedBox(
                           width: 10,
                         ),
                         Text(
-                          "Jobs Candidatados",
+                          "Modelos",
                           style: TextStyle(fontSize: 18),
                         )
                       ],
@@ -39,19 +40,63 @@ class DrawerWidget extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Icon(
-                          Icons.featured_play_list,
+                          Icons.list,
                           size: 30,
                         ),
                         SizedBox(
                           width: 10,
                         ),
                         Text(
-                          "Jobs",
+                          "Contratantes",
                           style: TextStyle(fontSize: 18),
                         )
                       ],
                     ),
-                    onTap: () {},
+                    onTap: ()=> Get.toNamed('contratantesCadastrados')
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 24.0),
+                  child: InkWell(
+                    splashColor: Theme.of(context).accentColor,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.group_add,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Solic. de Contratantes",
+                          style: TextStyle(fontSize: 18),
+                        )
+                      ],
+                    ),
+                    onTap: (){ Get.toNamed('solicitacaoContratante');},
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 24.0),
+                  child: InkWell(
+                    splashColor: Theme.of(context).accentColor,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.group_add,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Adicionar Admins",
+                          style: TextStyle(fontSize: 18),
+                        )
+                      ],
+                    ),
+                    onTap: ()=> Get.toNamed('addAdmin'),
                   ),
                 ),
                 Padding(
@@ -69,28 +114,6 @@ class DrawerWidget extends StatelessWidget {
                         ),
                         Text(
                           "Chat",
-                          style: TextStyle(fontSize: 18),
-                        )
-                      ],
-                    ),
-                    onTap: () {},
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 24.0),
-                  child: InkWell(
-                    splashColor: Theme.of(context).accentColor,
-                    child: Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.receipt,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "Solicitações",
                           style: TextStyle(fontSize: 18),
                         )
                       ],

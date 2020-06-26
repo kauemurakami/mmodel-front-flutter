@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vmodel/src/ui/android/user_home/widgets/icon_button_back_widget.dart';
 import 'package:vmodel/src/ui/android/widgets/cancel_button_widget.dart';
 
 class PortifolioPage extends StatelessWidget {
@@ -193,11 +194,7 @@ class PortifolioPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 24)),
             ),
           )),
-      Positioned(
-          child: SafeArea(
-        child: IconButton(
-            icon: Icon(Icons.arrow_back_ios), onPressed: () => Get.back()),
-      ))
+      IconButtonBackWidget()
     ]));
   }
 }

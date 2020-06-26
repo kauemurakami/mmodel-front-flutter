@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:vmodel/src/ui/android/user_home/widgets/draggable_widget.dart';
-import 'package:vmodel/src/ui/android/widgets/drawer_widget.dart';
+import 'package:vmodel/src/ui/android/user_home/widgets/drawer_user_widget.dart';
+import 'package:vmodel/src/ui/android/widgets/icon_edit_widget.dart';
 
 class HomeUserPage extends StatefulWidget {
   @override
@@ -14,12 +14,12 @@ class _HomeUserPageState extends State<HomeUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-        drawer: DrawerWidget(),
+        drawer: DrawerUserWidget(),
         body: SizedBox.expand(
             child: Stack(
           children: <Widget>[
             Image.asset("assets/images/modelo.jpeg",
-                fit: BoxFit.cover, width: MediaQuery.of(context).size.width),
+                fit: BoxFit.fill, width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height,),
             SizedBox.expand(
               child: DraggableCustimWidget()
             ),
@@ -37,18 +37,7 @@ class _HomeUserPageState extends State<HomeUserPage> {
                 
               ),
             ),
-            Positioned(
-              right: 5,
-              child: SafeArea(
-                child: IconButton(
-                    icon: Icon(Icons.edit, color: Colors.white),
-                    onPressed: () {
-                      //editar
-                      Get.toNamed('alterarPerfilModelo');
-                    },
-                    splashColor: Theme.of(context).accentColor),
-              ),
-            ),
+            EditButtonCustom()
           ],
         )));
   }
